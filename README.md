@@ -104,7 +104,7 @@ Blok `END` dijalankan sekali setelah semua baris selesai dibaca.
 
 Screenshot hasil menjalankan kelima opsi a-e dan opsi lain 
 
-![output soal 1](./Output_awk.jpeg)
+![output soal 1](Output_awk.jpeg)
 
 ### Kendala
 
@@ -168,7 +168,7 @@ paste -d',' <(echo "$ids") <(echo "$names") <(echo "$lats") <(echo "$lons") > ti
 
 Screenshot isi titik-penting.txt
 
-![titik penting](./Isi_titik_penting.jpeg)
+![titik penting](Isi_titik_penting.jpeg)
 
 
 
@@ -202,10 +202,10 @@ cat posisipusaka.txt
 
 Titik tengah dihitung dari node_001 dan node_003 karena keduanya adalah titik diagonal yang berseberangan
 
-> Screenshot isi posisipusaka.txt dan verifikasi di Google Maps:
+Screenshot isi posisipusaka.txt dan verifikasi di Google Maps:
 
-![posisi pusaka](./Koordinat_pusat.jpeg)
-![verifikasi maps](./Verifikasi_maps.png)
+![posisi pusaka](Koordinat_pusat.jpeg)
+![verifikasi maps](Verifikasi_maps.png)
 
 ### Kendala
 
