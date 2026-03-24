@@ -104,7 +104,7 @@ Blok `END` dijalankan sekali setelah semua baris selesai dibaca.
 
 Screenshot hasil menjalankan kelima opsi a-e dan opsi lain 
 
-![output soal 1](Output_awk.jpeg)
+![output soal_1](Output_awk.jpeg)
 
 ### Kendala
 
