@@ -102,9 +102,9 @@ Blok `END` dijalankan sekali setelah semua baris selesai dibaca.
 
 ### Output
 
-> Screenshot hasil menjalankan kelima opsi (a sampai e):
+Screenshot hasil menjalankan kelima opsi a-e dan opsi lain 
 
-![output soal 1](./assets/soal1_output.png)
+![output soal 1](./Output_awk.jpeg)
 
 ### Kendala
 
@@ -145,12 +145,6 @@ Dari hasil perintah gdwon ditemukan link github di paling bawah isinya, lalu clo
 git clone https://github.com/pocongcyber77/peta-gunung-kawi.git peta-gunung-kawi
 ```
 
-> Screenshot proses download dan clone:
-
-![download dan clone](./assets/soal2_clone.png)
-
-
-
 **3. parserkoordinat.sh**
 
 Script ini untuk mengekstrak `id`, `site_name`, `latitude`, dan `longitude` dari `gsxtrack.json`:
@@ -172,9 +166,9 @@ paste -d',' <(echo "$ids") <(echo "$names") <(echo "$lats") <(echo "$lons") > ti
 - `<(echo "$ids")` mengubah output variabel menjadi input yang bisa dibaca `paste`
 - `> titik-penting.txt`menyimpan hasil ke file
 
-> Screenshot isi titik-penting.txt:
+Screenshot isi titik-penting.txt
 
-![titik penting](./assets/soal2_titikpenting.png)
+![titik penting](./Isi_titik_penting.jpeg)
 
 
 
@@ -210,7 +204,8 @@ Titik tengah dihitung dari node_001 dan node_003 karena keduanya adalah titik di
 
 > Screenshot isi posisipusaka.txt dan verifikasi di Google Maps:
 
-![posisi pusaka](./assets/soal2_posisipusaka.png)
+![posisi pusaka](./Koordinat_pusat.jpeg)
+![verifikasi maps](./Verifikasi_maps.png)
 
 ### Kendala
 
