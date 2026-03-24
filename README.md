@@ -202,9 +202,10 @@ cat posisipusaka.txt
 
 Titik tengah dihitung dari node_001 dan node_003 karena keduanya adalah titik diagonal yang berseberangan
 
-Screenshot isi posisipusaka.txt dan verifikasi di Google Maps:
+*Diperoleh Koordinat Pusat: -7.928980,112.459050*
 
-![posisi pusaka](./assets/Koordinat_pusat.jpeg)
+Screenshot verifikasi di Google Maps:
+
 ![verifikasi maps](./assets/Verifikasi_maps.png)
 
 ### Kendala
