@@ -168,7 +168,7 @@ paste -d',' <(echo "$ids") <(echo "$names") <(echo "$lats") <(echo "$lons") > ti
 
 Screenshot isi titik-penting.txt
 
-![titik penting](Isi_titik_penting.jpeg)
+![titik penting](./assets/Isi_titik_penting.jpeg)
 
 
 
@@ -204,8 +204,8 @@ Titik tengah dihitung dari node_001 dan node_003 karena keduanya adalah titik di
 
 Screenshot isi posisipusaka.txt dan verifikasi di Google Maps:
 
-![posisi pusaka](Koordinat_pusat.jpeg)
-![verifikasi maps](Verifikasi_maps.png)
+![posisi pusaka](./assets/Koordinat_pusat.jpeg)
+![verifikasi maps](./assets/Verifikasi_maps.png)
 
 ### Kendala
 
