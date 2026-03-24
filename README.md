@@ -22,7 +22,7 @@ Repository ini terdiri dari 2 folder utama berdasarkan soal yang telah selesai d
             ├── nemupusaka.sh
             ├── titik-penting.txt
             └── posisipusaka.txt
-```-
+```
 
 ---
 
