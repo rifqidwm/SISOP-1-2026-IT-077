@@ -4,28 +4,6 @@ Rifqi Dwi Muslim | 5027251077
 
 ---
 
-## Struktur Direktori
-
-Repository ini terdiri dari 2 folder utama berdasarkan soal yang telah selesai dikerjakan:
-
-```
-.
-├── soal_1/
-│   ├── KANJ.sh
-│   └── passenger.csv
-└── soal_2/
-    └── ekspedisi/
-        ├── peta-ekspedisi-amba.pdf
-        └── peta-gunung-kawi/
-            ├── gsxtrack.json
-            ├── parserkoordinat.sh
-            ├── nemupusaka.sh
-            ├── titik-penting.txt
-            └── posisipusaka.txt
-```
-
----
-
 ## Soal 1 - ARGO NGAWI JESGEJES
 
 Soal pertama ini meminta kita untuk menganalisis data penumpang kereta KANJ dari file `passenger.csv` yang dilampirkan pada Spreadsheets dan diminta memakai `awk`. Semua perintah dimasukkan dalam 1 file `KANJ.sh` yang bisa dipanggil dengan opsi a, b, c, d, e.
