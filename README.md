@@ -53,7 +53,7 @@ NR > 1 {
 ```
 `NR > 1` NR adalah nomor baris saat ini. Kondisi ini memastikan header dilewati
 - **Opsi a** `count++` menambah counter setiap ada baris data, sehingga menghasilkan total penumpang
-- **Opsi b** `gerbong[$4] = 1` menyimpan nama gerbong sebagai key array. Karena key array tidak boleh duplikat, secara otomatis hanya menyimpan gerbong unik. Selain itu ditambahkan `gsub(/\r/, "", $4)` untuk membersihkan karakter Windows line ending (`\r`) yang bisa menyebabkan nilai duplikat terbaca sebagai nilai berbeda.
+- **(REVISI) Opsi b** `gerbong[$4] = 1` menyimpan nama gerbong sebagai key array. Karena key array tidak boleh duplikat, secara otomatis hanya menyimpan gerbong unik. Selain itu ditambahkan `gsub(/\r/, "", $4)` untuk membersihkan karakter Windows line ending (`\r`) yang bisa menyebabkan nilai duplikat terbaca sebagai nilai berbeda.
 - **Opsi c**  membandingkan `$2` (kolom usia) tiap baris dengan `max_usia`. Jika lebih besar, simpan usia dan nama penumpang tersebut
 - **Opsi d** `total_usia += $2` menjumlahkan semua usia, `count++` menghitung jumlah penumpang untuk pembagi rata rata
 - **Opsi e** cek apakah kolom `$3` bernilai "Business", kalau iya tambah counter `business`
@@ -191,7 +191,7 @@ Screenshot verifikasi di Google Maps:
 Tidak ada kendala
 
 
-# Soal 3 - Kost Slebew Ambatukam
+# (REVISI TAMBAHAN) - Soal 3 - Kost Slebew Ambatukam
 Soal ini meminta untuk membuat program manajemen kost berbasis CLI interaktif menggunakan Bash script dan AWK. Program harus memiliki menu yang terus berjalan sampai user memilih Exit, dengan fitur fitur yang telah saya selesaikan sebagai berikut
 
 1. Tambah Penghuni Baru
