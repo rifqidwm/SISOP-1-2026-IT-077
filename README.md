@@ -290,7 +290,7 @@ bash/kost_slebew.sh
 
 ---
 
-## Kendala yang Ditemui
+### Kendala
 
 Sempat bingung soal kenapa harus pakai file temp waktu delete/update data di CSV. Ternyata AWK tidak bisa sekaligus baca dan overwrite file yang sama, jadi solusinya tulis ke `/tmp/` dulu baru di-`mv`.
 
