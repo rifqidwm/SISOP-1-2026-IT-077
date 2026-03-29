@@ -283,11 +283,9 @@ NR > 1 {
 ## Cara Menjalankan
 
 ```bash
-# Beri izin eksekusi
-chmod +x kost_slebew.sh
 
 # Jalankan
-./kost_slebew.sh
+bash/kost_slebew.sh
 ```
 
 ---
