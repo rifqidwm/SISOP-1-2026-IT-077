@@ -189,3 +189,111 @@ Screenshot verifikasi di Google Maps:
 ### Kendala
 
 Tidak ada kendala
+
+
+# Soal 3 - Kost Slebew Ambatukam
+Soal ini meminta untuk membuat program manajemen kost berbasis CLI interaktif menggunakan Bash script dan AWK. Program harus memiliki menu yang terus berjalan sampai user memilih Exit, dengan fitur fitur yang telah saya selesaikan sebagai berikut
+
+1. Tambah Penghuni Baru
+2. Hapus Penghuni
+3. Tampilkan Daftar Penghuni
+4. Exit Program
+
+---
+
+## Penjelasan Pengerjaan
+
+### Inisialisasi
+
+Di awal script, kita buat semua folder dan file yang dibutuhkan kalau belum ada. Ini penting supaya script tidak error waktu pertama kali dijalankan.
+
+```bash
+mkdir -p data sampah log rekap
+
+if [ ! -f "$DATA_FILE" ]; then
+    echo "nama,kamar,harga_sewa,tanggal_masuk,status" > "$DATA_FILE"
+fi
+```
+
+---
+
+### Opsi 1 - Tambah Penghuni Baru
+
+Fungsi ini meminta input dari user secara interaktif, lalu melakukan beberapa validasi sebelum menyimpan data ke `penghuni.csv`.
+
+**Validasi yang dilakukan:**
+- Nomor kamar tidak boleh sama dengan yang sudah ada (unik)
+- Harga sewa harus angka positif
+- Format tanggal harus YYYY-MM-DD
+- Tanggal tidak boleh melebihi hari ini
+- Status hanya boleh `Aktif` atau `Menunggak`
+
+Untuk cek kamar unik, kita pakai AWK untuk scan seluruh CSV:
+
+```bash
+if awk -F',' -v k="$kamar" 'NR > 1 { if ($2 == k) found=1 } END { exit !found }' "$DATA_FILE"; then
+    echo "[X] Kamar sudah ditempati!"
+fi
+```
+
+Kalau semua validasi lolos, data langsung di append ke CSV:
+
+```bash
+echo "$nama,$kamar,$harga,$tanggal,$status" >> "$DATA_FILE"
+```
+
+---
+
+### Opsi 2 - Hapus Penghuni
+
+Penghuni tidak langsung dihapus begitu saja. Datanya dipindahkan dulu ke `sampah/history_hapus.csv` dengan tambahan kolom tanggal penghapusan, baru setelah itu dihapus dari database utama.
+
+```bash
+# Arsipkan ke history dulu
+awk -F',' -v n="$nama" -v d="$today" \
+    'NR > 1 && $1 == n { print $0","d }' "$DATA_FILE" >> "$HISTORY_FILE"
+
+# Baru hapus dari database utama
+awk -F',' -v n="$nama" \
+    'NR == 1 || $1 != n { print }' "$DATA_FILE" > /tmp/temp.csv
+mv /tmp/temp.csv "$DATA_FILE"
+```
+
+Kenapa pakai file temp (`/tmp/temp.csv`)? Karena kita tidak bisa baca dan tulis file yang sama secara bersamaan di AWK, jadi kita tulis ke file sementara dulu, lalu replace file aslinya.
+
+---
+
+### Opsi 3 - Tampilkan Daftar Penghuni
+
+Menggunakan AWK untuk memformat data CSV menjadi tabel yang rapi di terminal, lengkap dengan summary total penghuni, jumlah aktif, dan jumlah menunggak.
+
+```bash
+awk -F',' '
+NR > 1 {
+    count++
+    printf "%-4s| %-20s| %-6s| %-15s| %s\n", count, $1, $2, "Rp"$3, $5
+}
+' "$DATA_FILE"
+```
+
+`printf` dengan format `%-Ns` dipakai supaya kolom-kolomnya rata kiri dan lebarnya konsisten.
+
+---
+
+## Cara Menjalankan
+
+```bash
+# Beri izin eksekusi
+chmod +x kost_slebew.sh
+
+# Jalankan
+./kost_slebew.sh
+```
+
+---
+
+## Kendala yang Ditemui
+
+Sempat bingung soal kenapa harus pakai file temp waktu delete/update data di CSV. Ternyata AWK tidak bisa sekaligus baca dan overwrite file yang sama, jadi solusinya tulis ke `/tmp/` dulu baru di-`mv`.
+
+Selain itu, validasi tanggal cukup tricky karena harus pastikan format-nya benar dan tidak melebihi tanggal hari ini. Akhirnya pakai kombinasi regex untuk cek format, dan string comparison untuk cek apakah tanggal melebihi hari ini.
