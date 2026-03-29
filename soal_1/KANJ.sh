@@ -6,7 +6,7 @@ delete ARGV[2]
 
 NR > 1 {
 	if(opsi == "a") count++
-	if(opsi == "b") gerbong[$4]++
+	if(opsi == "b") { gsub(/\r/, "", $4); gerbong[$4] = 1 }
 	if(opsi == "c") {
 		if($2 > max_usia) {max_usia = $2; nama_tertua = $1 }
  }
